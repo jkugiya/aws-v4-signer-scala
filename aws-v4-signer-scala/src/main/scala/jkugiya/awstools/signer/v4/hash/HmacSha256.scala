@@ -5,7 +5,7 @@ import javax.crypto.spec.SecretKeySpec
 
 import jkugiya.awstools.signer.v4.SigningException
 
-import scala.util.{Failure, Success, Try}
+import scala.util.{ Failure, Success, Try }
 
 private[v4] object HmacSha256 {
 

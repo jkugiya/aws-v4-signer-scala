@@ -2,13 +2,14 @@ package jkugiya.awstools.signer.v4
 
 import java.nio.charset.Charset
 
-import jkugiya.awstools.signer.v4.credentials.{AwsCredentials, AwsCredentialsProviderChain}
-import jkugiya.awstools.signer.v4.hash.{Base16, HmacSha256, Sha256}
+import jkugiya.awstools.signer.v4.credentials.{ AwsCredentials, AwsCredentialsProviderChain }
+import jkugiya.awstools.signer.v4.hash.{ Base16, HmacSha256, Sha256 }
 
 case class Signer(
-  region: String,
-  service: String,
-  credentials: AwsCredentials = AwsCredentialsProviderChain.credentials) {
+    region: String,
+    service: String,
+    credentials: AwsCredentials = AwsCredentialsProviderChain.credentials
+) {
 
   import Signer._
 
@@ -29,7 +30,8 @@ object Signer {
     region: String,
     service: String,
     request: CanonicalRequest,
-    credentials: AwsCredentials): String = {
+    credentials: AwsCredentials
+  ): String = {
     val headers = request.headers
 
     val date =
@@ -60,7 +62,8 @@ object Signer {
     dateWithoutTimestamp: String,
     stringToSign: String,
     service: String,
-    region: String) = {
+    region: String
+  ) = {
     val kSecret = (AuthTag + secretKey).getBytes("UTF-8")
     val kDate = HmacSha256.encode(kSecret, dateWithoutTimestamp)
     val kRegion = HmacSha256.encode(kDate, region)

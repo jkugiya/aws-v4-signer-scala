@@ -1,7 +1,7 @@
 package jkugiya.awstools.signer.v4
 
 private[v4] class SigningException(msg: String = null, cause: Throwable = null)
-  extends RuntimeException(SigningException.message(msg, cause), cause) {
+    extends RuntimeException(SigningException.message(msg, cause), cause) {
 
   def this(msg: String) = this(msg, null)
 

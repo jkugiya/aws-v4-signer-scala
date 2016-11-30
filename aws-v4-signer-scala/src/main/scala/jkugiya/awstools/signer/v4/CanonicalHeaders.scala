@@ -8,7 +8,7 @@ private[v4] final case class CanonicalHeaders private (private val headers: Tree
   val names: String = {
     val sb =
       headers.keySet
-      .foldLeft(mutable.StringBuilder.newBuilder)((acc, v) => acc.append(v.toLowerCase()).append(';'))
+        .foldLeft(mutable.StringBuilder.newBuilder)((acc, v) => acc.append(v.toLowerCase()).append(';'))
     sb.deleteCharAt(sb.lastIndexOf(";"))
     sb.mkString
   }
@@ -41,14 +41,14 @@ object CanonicalHeaders {
         x.toLowerCase().compareTo(y.toLowerCase())
     }
     val internalMap =
-    headers.foldLeft(TreeMap.empty[String, Vector[String]]) {
-      case (acc, Header(k, v)) =>
-        acc.get(k).fold {
-          acc + (k -> Vector(v))
-        } { values =>
-          acc + (k -> (values :+ v))
-        }
-    }
+      headers.foldLeft(TreeMap.empty[String, Vector[String]]) {
+        case (acc, Header(k, v)) =>
+          acc.get(k).fold {
+            acc + (k -> Vector(v))
+          } { values =>
+            acc + (k -> (values :+ v))
+          }
+      }
     CanonicalHeaders(internalMap)
   }
 

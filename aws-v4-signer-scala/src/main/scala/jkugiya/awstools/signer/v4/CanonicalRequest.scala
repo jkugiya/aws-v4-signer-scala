@@ -1,9 +1,9 @@
 package jkugiya.awstools.signer.v4
 
 private[v4] final case class CanonicalRequest(
-  httpRequest: HttpRequest,
-  headers: CanonicalHeaders,
-  contentSha256: String
+    httpRequest: HttpRequest,
+    headers: CanonicalHeaders,
+    contentSha256: String
 ) {
 
   def mkString: String = {
@@ -13,7 +13,8 @@ private[v4] final case class CanonicalRequest(
       httpRequest.query,
       headers.mkString,
       headers.names,
-      contentSha256).mkString("\n")
+      contentSha256
+    ).mkString("\n")
   }
 
 }
