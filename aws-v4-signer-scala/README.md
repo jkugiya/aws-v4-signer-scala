@@ -1,3 +1,4 @@
+
 #aws-v4-signer-scala
 
 Ported from [aws-v4-signer-java](https://github.com/lucasweb78/aws-v4-signer-java)
@@ -8,7 +9,7 @@ aws-v4-signer-java is a lightweight, zero-dependency implementation of the AWS V
 Add the latest aws-v4-signer-scala dependency to your project
 
 ```
-  "jkugiya" %% "aws-v4-signer-scala" % "0.1"
+  "com.github.jkugiya" %% "aws-v4-signer-scala" % "0.1"
 ```
 
 ## Usage
