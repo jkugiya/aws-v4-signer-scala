@@ -1,6 +1,6 @@
 name := "aws-v4-signer-scala"
 
-version := "0.2"
+version := "0.1"
 
 scalaVersion := "2.11.8"
 
