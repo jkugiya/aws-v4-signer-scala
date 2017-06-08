@@ -1,7 +1,7 @@
 name := "aws-v4-signer-scala"
 organization := "com.github.jkugiya"
 
-version := "0.12"
+version := "0.13"
 
 scalaVersion := "2.11.8"
 
