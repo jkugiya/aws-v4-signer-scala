@@ -27,10 +27,10 @@ object Signer {
   private[this] val Algorithm = AuthTag + "-HMAC-SHA256"
 
   private def signInternal(
-    region: String,
-    service: String,
-    request: CanonicalRequest,
-    credentials: AwsCredentials
+      region: String,
+      service: String,
+      request: CanonicalRequest,
+      credentials: AwsCredentials
   ): String = {
     val headers = request.headers
 
@@ -58,11 +58,11 @@ object Signer {
   }
 
   private[this] def buildSignature(
-    secretKey: String,
-    dateWithoutTimestamp: String,
-    stringToSign: String,
-    service: String,
-    region: String
+      secretKey: String,
+      dateWithoutTimestamp: String,
+      stringToSign: String,
+      service: String,
+      region: String
   ) = {
     val kSecret = (AuthTag + secretKey).getBytes("UTF-8")
     val kDate = HmacSha256.encode(kSecret, dateWithoutTimestamp)
@@ -72,7 +72,12 @@ object Signer {
     Base16.encode(HmacSha256.encode(kSigning, stringToSign)).toLowerCase
   }
 
-  private[this] def buildAuthHeader(accessKey: String, credentialScope: String, signedHeaders: String, signature: String) = {
+  private[this] def buildAuthHeader(
+      accessKey: String,
+      credentialScope: String,
+      signedHeaders: String,
+      signature: String
+  ) = {
     Algorithm + " " + "Credential=" + accessKey + "/" + credentialScope + ", " + "SignedHeaders=" + signedHeaders +
       ", " + "Signature=" + signature
   }

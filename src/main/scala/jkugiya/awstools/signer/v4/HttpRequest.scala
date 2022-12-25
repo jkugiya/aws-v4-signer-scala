@@ -8,7 +8,8 @@ case class HttpRequest(method: String, uri: URI) {
     if (uri.getPath.isEmpty) "/"
     else {
       val path =
-        uri.getPath.substring(1, uri.getPath.length)
+        uri.getPath
+          .substring(1, uri.getPath.length)
           .split("/")
           .map(URLEncoder.encode(_, "UTF-8").replaceAll("\\*", "%2A"))
           .mkString("/")

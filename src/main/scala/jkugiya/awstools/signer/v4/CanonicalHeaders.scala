@@ -41,9 +41,10 @@ object CanonicalHeaders {
         x.toLowerCase().compareTo(y.toLowerCase())
     }
     val internalMap =
-      headers.foldLeft(TreeMap.empty[String, Vector[String]]) {
-        case (acc, Header(k, v)) =>
-          acc.get(k).fold {
+      headers.foldLeft(TreeMap.empty[String, Vector[String]]) { case (acc, Header(k, v)) =>
+        acc
+          .get(k)
+          .fold {
             acc + (k -> Vector(v))
           } { values =>
             acc + (k -> (values :+ v))
