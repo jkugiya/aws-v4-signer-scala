@@ -7,8 +7,8 @@ private[v4] object Base16 {
   def encode(data: Array[Byte]): String = {
     val sb = StringBuilder.newBuilder
     data foreach { d =>
-      sb.append(EncTab((d & 0xF0) >> 4))
-      sb.append(EncTab(d & 0x0F))
+      sb.append(EncTab((d & 0xf0) >> 4))
+      sb.append(EncTab(d & 0x0f))
     }
     sb.toString()
   }
